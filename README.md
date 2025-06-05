@@ -57,9 +57,8 @@ This starter includes:
 3. **Configure services** in the `src/services/` directory
 4. **Update environment** variables in `src/env.ts`
 
-## 📚 Documentation
-- [ADK Library Documentation](https://github.com/IQAICOM/adk)
-- [Agent Development Guide](#) <!-- Add link when available -->
+## 📚 Links
+- [ADK Library](https://github.com/IQAICOM/adk-ts)
 
 ## 🤝 Contributing
 1. Fork the repository
