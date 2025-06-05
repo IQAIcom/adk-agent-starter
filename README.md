@@ -1,111 +1,76 @@
-# ATP Investment Agent
+# 🤖 ADK Agent Starter
 
-**ATP Investment Agent** is an autonomous workflow for making AI-driven investments on IQAI's ATP platform. It leverages the [adk-ts](https://github.com/IQAICOM/adk-ts) agent framework and integrates with MCP toolsets for portfolio analysis, agent discovery, investment execution, and Telegram notifications.
+This is a starter template to start building your own agent with `@iqai/adk` library. 
 
-## Features
+## 🚀 Get Started
+Start by cloning the repository or clicking on use as template button on github ui. 
 
-- **Portfolio Analysis:** Analyzes your ATP portfolio and IQ wallet to plan investments.
-- **Agent Discovery:** Finds and ranks top-performing ATP agents for new opportunities.
-- **Investment Decision:** Uses LLMs to select agents and diversify investments, avoiding repeated or failed agents.
-- **Investment Execution:** Executes purchases securely and logs transactions.
-- **Telegram Notifications:** Sends formatted investment reports and alerts to your Telegram.
+```bash
+git clone https://github.com/IQAICOM/adk-agent-starter.git
+```
 
-## Workflow
-
-1. **Portfolio Analysis:** Reviews current holdings and available IQ balance.
-2. **Agent Discovery:** Identifies promising ATP agents.
-3. **Investment Decision:** Selects the best agent and amount to invest.
-4. **Investment Execution:** Buys the agent and records the transaction.
-5. **Notification:** Sends a summary to your Telegram channel.
-
-## Prerequisites
-
-- Node.js (v18+ recommended)
-- pnpm (package manager)
-- IQAI wallet with IQ tokens
-- Access to OpenAI or Google Gemini LLM API (for LLM_MODEL)
-- (Optional) Telegram bot credentials for notifications
-
-## Installation
+📦 Install the dependencies
 
 ```bash
 pnpm install
 ```
 
-## Configuration
-
-Copy the example environment file and fill in your credentials:
+▶️ Run the agent
 
 ```bash
-cp example.env .env
+pnpm dev
 ```
 
-Edit `.env` with your wallet, LLM, and (optionally) Telegram details:
+## 📁 Folder Structure
+The main agent code lives in `index.ts` where the subagents live inside the `agents` folder. The agents can have tools which reside in the `tools` folder.
 
-```env
-LLM_MODEL=gemini-2.0-flash
-WALLET_PRIVATE_KEY=your_private_key
-ATP_USE_DEV=true
-ATP_API_KEY=your_api_key
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-TELEGRAM_CHAT_ID=your_telegram_chat_id
-TELEGRAM_SERVER_KEY=your_telegram_server_key
-TELEGRAM_PROFILE_ID=your_telegram_profile_id
-ATP_INVESTMENT_PERCENTAGE=0.01
-ATP_MIN_INVESTMENT=10
-ATP_CRON_SCHEDULE="0 */3 * * *"
+```
+├── src/
+│   ├── agents/
+│   │   └── financial-agent/
+│   │       ├── index.ts
+│   │       └── tools/
+│   │           └── currency-converter-tool.ts
+│   ├── services/
+│   │   └── wallet.ts
+│   ├── env.ts
+│   └── index.ts
 ```
 
-## Development
-
-- **Development mode (with auto-reload):**  
-  `pnpm dev`
-- **Build the project:**  
-  `pnpm build`
-- **Clean build artifacts:**  
-  `pnpm clean`
-
-## Running the Agent
-
-First, build the project:
+## ⚙️ Environment Setup
+Make sure to configure your environment variables:
 
 ```bash
-pnpm build
+cp .env.example .env
 ```
 
-Then run:
+## 🧰 Dev Tools
+This starter includes:
+- 🐕 **Husky**: Git hooks for code quality
+- 🎨 **Biome**: Linting and formatting
+- 🚀 **GitHub Actions**: CI/CD pipeline
+- 📦 **PNPM**: Fast package manager
 
-- **Run once:**  
-  `pnpm start:once`
-- **Run on schedule (default: every 3 hours):**  
-  `pnpm start`
+## 🏗️ Building Your Agent
+1. **Create new agents** in the `src/agents/` directory
+2. **Add tools** to your agents in the `tools/` subdirectory
+3. **Configure services** in the `src/services/` directory
+4. **Update environment** variables in `src/env.ts`
 
-## Environment Variables
+## 📚 Documentation
+- [ADK Library Documentation](https://github.com/IQAICOM/adk)
+- [Agent Development Guide](#) <!-- Add link when available -->
 
-See `example.env` for all options. Key variables:
+## 🤝 Contributing
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-- `LLM_MODEL`: LLM to use (e.g., `gemini-2.0-flash`)
-- `WALLET_PRIVATE_KEY`: Your IQAI wallet private key
-- `ATP_INVESTMENT_PERCENTAGE`: % of IQ balance to invest per cycle
-- `ATP_MIN_INVESTMENT`: Minimum investment amount
-- `ATP_CRON_SCHEDULE`: Cron schedule for agent runs
-- Telegram variables for notifications
+## 📄 License
+MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Project Structure
-
-- `agents/` – Specialized agents for each workflow step
-- `services/` – Wallet management and validation
-- `utils/` – Utility functions
-- `atp-investment-agent.ts` – Main workflow class
-- `index.ts` – Entry point and scheduler
-- `dist/` – Compiled JavaScript output
-
-## Security
-
-- **Never share your wallet private key.**
-- Use environment variables and `.env` files for sensitive data.
-
-## License
-
-MIT
-# adk-agent-starter
+## 🆘 Support
+If you encounter any issues or have questions:
+- 📝 [Create an issue](https://github.com/IQAICOM/adk-agent-starter/issues)
