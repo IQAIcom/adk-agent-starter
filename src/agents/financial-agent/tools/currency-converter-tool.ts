@@ -1,4 +1,4 @@
-import { Agent, BaseTool } from "@iqai/adk";
+import { BaseTool } from "@iqai/adk";
 
 export class CurrencyConverterTool extends BaseTool {
 	constructor() {
@@ -15,7 +15,10 @@ export class CurrencyConverterTool extends BaseTool {
 			parameters: {
 				type: "object",
 				properties: {
-					amount: { type: "number" },
+					amount: {
+						type: "number",
+						description: "The amount to convert",
+					},
 					fromCurrency: {
 						type: "string",
 						description: "Source currency code (e.g., USD)",
