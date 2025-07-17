@@ -1,12 +1,12 @@
-import { Agent } from "@iqai/adk";
+import { AgentBuilder } from "@iqai/adk";
 import * as dotenv from "dotenv";
 import { CurrencyConverterTool } from "./tools/currency-converter-tool";
 
 dotenv.config();
-export const financialAgent = new Agent({
-	name: "currency_conversion_assistant",
-	model: "gemini-2.0-flash",
-	description:
-		"You are a financial assistant. Use the currency_converter tool for currency conversions.",
-	tools: [new CurrencyConverterTool()],
-});
+export const getFinancialAgent = () =>
+	AgentBuilder.create("financial_agent")
+		.withModel("gemini-2.0-flash")
+		.withDescription("Financial assistant for currency conversion")
+		.withInstruction("Use the currency_converter tool to convert currencies.")
+		.withTools(new CurrencyConverterTool())
+		.build();

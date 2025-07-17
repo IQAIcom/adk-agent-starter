@@ -1,10 +1,9 @@
-import { financialAgent } from "./agents/financial-agent";
+import { getFinancialAgent } from "./agents/financial-agent";
 
 async function main() {
-	const response = await financialAgent.run({
-		messages: [{ role: "user", content: "Convert 100 USD to EUR." }],
-	});
-	console.log(response.content);
+	const { runner } = await getFinancialAgent();
+	const response = await runner.ask("Convert 100 USD to EUR.");
+	console.log(response);
 }
 
 main().catch(console.error);
